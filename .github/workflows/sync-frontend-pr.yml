@@ -24,14 +24,14 @@ jobs:
 
       - name: Create sync branch
         run: |
-          git checkout -b sync-frontend-$(date +%s) dev
+          git checkout -b sync-frontend-$(date +%s) Dev
           git merge upstream/frontend --no-edit --strategy-option theirs
           git push origin HEAD
 
       - name: Create PR
         uses: peter-evans/create-pull-request@v4
         with:
-          base: dev                  # Target branch
+          base: Dev                  # Target branch
           branch: sync-frontend-${{ github.run_id }}  # Temporary branch
           title: '[Auto-Sync] Frontend → Dev'
           body: |
